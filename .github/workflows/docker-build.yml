@@ -41,5 +41,5 @@ jobs:
         run: docker build -t ${{ vars.DOCKERHUB_USERNAME }}/vote-web_proj:latest .
 
       - name: docker push image
-        run: docker push ${ vars.DOCKERHUB_USERNAME }/vote-web_proj:latest
+        run: docker push ${{ vars.DOCKERHUB_USERNAME }}/vote-web_proj:latest
         
