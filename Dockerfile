@@ -3,12 +3,12 @@ FROM node:20-alpine AS build
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY vote/package*.json ./
 
 RUN npm install
 RUN echo "hi npm installed"
 
-COPY . .
+COPY vote/ ./
 
 RUN npm run build
 
