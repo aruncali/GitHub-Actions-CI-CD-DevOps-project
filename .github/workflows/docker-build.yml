@@ -1,10 +1,8 @@
 name: Build Docker Image
 
 on:
-  push:
-    branches:
-      - main
-
+  workflow_dispatch: 
+  
   pull_request:
     branches:
       - main
@@ -30,4 +28,4 @@ jobs:
         run: npm run build
 
       - name: Build Docker image
-        run: docker build -t vote-web:latest .
+        run: docker build -t vote-web_proj:latest .
