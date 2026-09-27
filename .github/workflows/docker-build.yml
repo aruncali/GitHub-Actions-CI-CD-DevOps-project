@@ -42,4 +42,4 @@ jobs:
 
       - name: docker push image
         run: docker push ${{ vars.DOCKERHUB_USERNAME }}/vote-web_proj:latest 
-        run: echo "docker is completed succesfully"
+        
