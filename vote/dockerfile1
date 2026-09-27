@@ -1,0 +1,30 @@
+#stage 1 :build the application
+FROM node:20-alpine AS build
+#set working directory
+WORKDIR /app
+#copy pakagesfile
+copy package*.json ./
+
+# install depedencies
+RUN npm install
+
+# application run
+COPY . .
+
+RUN npm run  build
+
+# stage 2 : run using nginx
+FROM nginx:alpine 
+
+#remove default nginx file
+RUN rm -rf /usr/share/nginx/html/*
+
+# copy vite build output 
+COPY --from=build /app/dist /usr/share/nginx/html 
+
+#expose http port
+
+EXPOSE 80
+
+# start nginx
+CMD ["nginx","-g", "daemon off:"] 
